@@ -1,6 +1,8 @@
 ﻿#ifndef INFORMATIONPLATFORM_H
 #define INFORMATIONPLATFORM_H
 
+#pragma execution_character_set("utf-8")
+
 #include <QtGui>
 #include <QString>
 #include <QtWidgets>
@@ -25,6 +27,19 @@ typedef struct STUDENT_INFO
 	unsigned int		phoneNo;
 	QString				school;
 }Student_Info;
+
+typedef struct CLASS_INFO
+{
+	QString		class_code;
+	QString		class_name;
+	int				grade;
+	QString		subject;
+	int				totalNum;
+	int				assignNum;
+	int				value;
+	int				classNum;
+	QString		teacherName;
+}Class_Info;
 
 
 class CStudent_Info: public QObject
@@ -59,7 +74,10 @@ public:
 
 public slots:
 	//提交信息槽函数
-	bool slt_submitInfo(void);
+	void slt_submitInfo(void);
+	void slt_searchInfo(void);
+	void slt_alterInfo(void);
+	void slt_tableItemClicked(const QModelIndex&);
 
 private:
 	//初始化数据信息
@@ -69,14 +87,17 @@ private:
 	void initTableView(void);
 	//更新表页信息
 	void updateTable(Student_Info &info);
+	void updateTable(Class_Info &info);
 
 	//初始化Mysql数据库连接
 	bool initMySqlConnection(void);
 
 	//插入学生数据
 	bool insertStudentInfo(CStudent_Info &info);
+	bool updateStudentInfo(CStudent_Info &info);
 
 	bool getStudentInfo(void);
+	bool getClassInfo(void);
 
 private:
 	Ui::informationPlatformClass ui;
@@ -88,8 +109,10 @@ private:
 	MYSQL_ROW column; //一个行数据的类型安全(type-safe)的表示，表示数据行的列
 
 	QStandardItemModel *student_model;
+	QStandardItemModel *class_model;
 
-	int					m_currentId;
+	int					m_newId;
+	int					m_clickedId;		//点击
 
 };
 

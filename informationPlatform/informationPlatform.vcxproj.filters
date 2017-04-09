@@ -50,6 +50,18 @@
     <ClCompile Include="GeneratedFiles\qrc_informationplatform.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="studentInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_studentInfo.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="mysqlMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_studentInfo.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="informationplatform.h">
@@ -61,10 +73,16 @@
     <CustomBuild Include="informationplatform.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="studentInfo.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_informationplatform.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mysqlMgr.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -24,6 +24,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
@@ -36,22 +37,53 @@ class Ui_informationPlatformClass
 public:
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
+    QTabWidget *tabWidget;
+    QWidget *tab;
+    QVBoxLayout *verticalLayout_2;
     QGroupBox *groupBox;
     QGridLayout *gridLayout;
+    QLineEdit *school;
+    QLabel *label_3;
+    QLabel *label_4;
+    QComboBox *sex;
     QLabel *label;
     QLineEdit *name;
     QLabel *label_2;
-    QLineEdit *age;
-    QPushButton *pushButton;
-    QLabel *label_4;
-    QLineEdit *school;
-    QLineEdit *phone;
-    QLabel *label_3;
     QLabel *label_5;
-    QComboBox *sex;
+    QPushButton *alter;
+    QLineEdit *age;
+    QLineEdit *phone;
+    QPushButton *submit;
     QGroupBox *groupBox_2;
-    QHBoxLayout *horizontalLayout;
+    QGridLayout *gridLayout_2;
     QTableView *student_tableview;
+    QWidget *tab_2;
+    QVBoxLayout *verticalLayout_3;
+    QGroupBox *groupBox_3;
+    QGridLayout *gridLayout_3;
+    QLabel *label_10;
+    QLabel *label_6;
+    QLabel *label_14;
+    QLabel *label_15;
+    QLabel *label_16;
+    QLabel *label_13;
+    QPushButton *addClass;
+    QLabel *label_7;
+    QLabel *label_9;
+    QLabel *label_12;
+    QPushButton *alterClass;
+    QLineEdit *startTime_3;
+    QLineEdit *startTime_2;
+    QLineEdit *classVolumn_2;
+    QComboBox *comboBox_2;
+    QLineEdit *classVolumn;
+    QLineEdit *classVolumn_4;
+    QLineEdit *classVolumn_3;
+    QLineEdit *classContain;
+    QLineEdit *endTIme_2;
+    QGroupBox *groupBox_4;
+    QHBoxLayout *horizontalLayout;
+    QTableView *class_tableview;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -60,23 +92,52 @@ public:
     {
         if (informationPlatformClass->objectName().isEmpty())
             informationPlatformClass->setObjectName(QStringLiteral("informationPlatformClass"));
-        informationPlatformClass->resize(785, 707);
+        informationPlatformClass->resize(1483, 954);
         QFont font;
         font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font.setPointSize(12);
         informationPlatformClass->setFont(font);
         centralWidget = new QWidget(informationPlatformClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        centralWidget->setStyleSheet(QString::fromUtf8("font: 13pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
         verticalLayout = new QVBoxLayout(centralWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        groupBox = new QGroupBox(centralWidget);
+        tabWidget = new QTabWidget(centralWidget);
+        tabWidget->setObjectName(QStringLiteral("tabWidget"));
+        tab = new QWidget();
+        tab->setObjectName(QStringLiteral("tab"));
+        verticalLayout_2 = new QVBoxLayout(tab);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        groupBox = new QGroupBox(tab);
         groupBox->setObjectName(QStringLiteral("groupBox"));
         gridLayout = new QGridLayout(groupBox);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        school = new QLineEdit(groupBox);
+        school->setObjectName(QStringLiteral("school"));
+
+        gridLayout->addWidget(school, 2, 1, 1, 1);
+
+        label_3 = new QLabel(groupBox);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        gridLayout->addWidget(label_3, 1, 2, 1, 1);
+
+        label_4 = new QLabel(groupBox);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        gridLayout->addWidget(label_4, 2, 0, 1, 1);
+
+        sex = new QComboBox(groupBox);
+        sex->setObjectName(QStringLiteral("sex"));
+
+        gridLayout->addWidget(sex, 1, 1, 1, 1);
+
         label = new QLabel(groupBox);
         label->setObjectName(QStringLiteral("label"));
 
@@ -92,67 +153,198 @@ public:
 
         gridLayout->addWidget(label_2, 0, 2, 1, 1);
 
+        label_5 = new QLabel(groupBox);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        gridLayout->addWidget(label_5, 1, 0, 1, 1);
+
+        alter = new QPushButton(groupBox);
+        alter->setObjectName(QStringLiteral("alter"));
+
+        gridLayout->addWidget(alter, 2, 4, 1, 1);
+
         age = new QLineEdit(groupBox);
         age->setObjectName(QStringLiteral("age"));
 
         gridLayout->addWidget(age, 0, 3, 1, 1);
-
-        pushButton = new QPushButton(groupBox);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-
-        gridLayout->addWidget(pushButton, 2, 3, 1, 1);
-
-        label_4 = new QLabel(groupBox);
-        label_4->setObjectName(QStringLiteral("label_4"));
-
-        gridLayout->addWidget(label_4, 2, 0, 1, 1);
-
-        school = new QLineEdit(groupBox);
-        school->setObjectName(QStringLiteral("school"));
-
-        gridLayout->addWidget(school, 2, 1, 1, 1);
 
         phone = new QLineEdit(groupBox);
         phone->setObjectName(QStringLiteral("phone"));
 
         gridLayout->addWidget(phone, 1, 3, 1, 1);
 
-        label_3 = new QLabel(groupBox);
-        label_3->setObjectName(QStringLiteral("label_3"));
+        submit = new QPushButton(groupBox);
+        submit->setObjectName(QStringLiteral("submit"));
 
-        gridLayout->addWidget(label_3, 1, 2, 1, 1);
+        gridLayout->addWidget(submit, 2, 2, 1, 2);
 
-        label_5 = new QLabel(groupBox);
-        label_5->setObjectName(QStringLiteral("label_5"));
+        gridLayout->setColumnStretch(0, 1);
+        gridLayout->setColumnStretch(1, 2);
+        gridLayout->setColumnStretch(2, 1);
+        gridLayout->setColumnStretch(3, 2);
+        gridLayout->setColumnStretch(4, 2);
 
-        gridLayout->addWidget(label_5, 1, 0, 1, 1);
+        verticalLayout_2->addWidget(groupBox);
 
-        sex = new QComboBox(groupBox);
-        sex->setObjectName(QStringLiteral("sex"));
-
-        gridLayout->addWidget(sex, 1, 1, 1, 1);
-
-
-        verticalLayout->addWidget(groupBox);
-
-        groupBox_2 = new QGroupBox(centralWidget);
+        groupBox_2 = new QGroupBox(tab);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        horizontalLayout = new QHBoxLayout(groupBox_2);
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        gridLayout_2 = new QGridLayout(groupBox_2);
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setContentsMargins(11, 11, 11, 11);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         student_tableview = new QTableView(groupBox_2);
         student_tableview->setObjectName(QStringLiteral("student_tableview"));
 
-        horizontalLayout->addWidget(student_tableview);
+        gridLayout_2->addWidget(student_tableview, 0, 0, 1, 1);
 
 
-        verticalLayout->addWidget(groupBox_2);
+        verticalLayout_2->addWidget(groupBox_2);
+
+        tabWidget->addTab(tab, QString());
+        tab_2 = new QWidget();
+        tab_2->setObjectName(QStringLiteral("tab_2"));
+        verticalLayout_3 = new QVBoxLayout(tab_2);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        groupBox_3 = new QGroupBox(tab_2);
+        groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
+        gridLayout_3 = new QGridLayout(groupBox_3);
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setContentsMargins(11, 11, 11, 11);
+        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
+        label_10 = new QLabel(groupBox_3);
+        label_10->setObjectName(QStringLiteral("label_10"));
+
+        gridLayout_3->addWidget(label_10, 2, 0, 1, 1);
+
+        label_6 = new QLabel(groupBox_3);
+        label_6->setObjectName(QStringLiteral("label_6"));
+
+        gridLayout_3->addWidget(label_6, 0, 0, 1, 1);
+
+        label_14 = new QLabel(groupBox_3);
+        label_14->setObjectName(QStringLiteral("label_14"));
+
+        gridLayout_3->addWidget(label_14, 3, 0, 1, 1);
+
+        label_15 = new QLabel(groupBox_3);
+        label_15->setObjectName(QStringLiteral("label_15"));
+
+        gridLayout_3->addWidget(label_15, 3, 3, 1, 1);
+
+        label_16 = new QLabel(groupBox_3);
+        label_16->setObjectName(QStringLiteral("label_16"));
+
+        gridLayout_3->addWidget(label_16, 4, 0, 1, 1);
+
+        label_13 = new QLabel(groupBox_3);
+        label_13->setObjectName(QStringLiteral("label_13"));
+
+        gridLayout_3->addWidget(label_13, 1, 3, 1, 1);
+
+        addClass = new QPushButton(groupBox_3);
+        addClass->setObjectName(QStringLiteral("addClass"));
+
+        gridLayout_3->addWidget(addClass, 5, 1, 1, 1);
+
+        label_7 = new QLabel(groupBox_3);
+        label_7->setObjectName(QStringLiteral("label_7"));
+
+        gridLayout_3->addWidget(label_7, 0, 3, 1, 1);
+
+        label_9 = new QLabel(groupBox_3);
+        label_9->setObjectName(QStringLiteral("label_9"));
+
+        gridLayout_3->addWidget(label_9, 2, 3, 1, 1);
+
+        label_12 = new QLabel(groupBox_3);
+        label_12->setObjectName(QStringLiteral("label_12"));
+
+        gridLayout_3->addWidget(label_12, 1, 0, 1, 1);
+
+        alterClass = new QPushButton(groupBox_3);
+        alterClass->setObjectName(QStringLiteral("alterClass"));
+
+        gridLayout_3->addWidget(alterClass, 5, 2, 1, 1);
+
+        startTime_3 = new QLineEdit(groupBox_3);
+        startTime_3->setObjectName(QStringLiteral("startTime_3"));
+
+        gridLayout_3->addWidget(startTime_3, 4, 1, 1, 2);
+
+        startTime_2 = new QLineEdit(groupBox_3);
+        startTime_2->setObjectName(QStringLiteral("startTime_2"));
+
+        gridLayout_3->addWidget(startTime_2, 3, 1, 1, 2);
+
+        classVolumn_2 = new QLineEdit(groupBox_3);
+        classVolumn_2->setObjectName(QStringLiteral("classVolumn_2"));
+
+        gridLayout_3->addWidget(classVolumn_2, 2, 1, 1, 2);
+
+        comboBox_2 = new QComboBox(groupBox_3);
+        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
+
+        gridLayout_3->addWidget(comboBox_2, 1, 1, 1, 2);
+
+        classVolumn = new QLineEdit(groupBox_3);
+        classVolumn->setObjectName(QStringLiteral("classVolumn"));
+
+        gridLayout_3->addWidget(classVolumn, 0, 1, 1, 2);
+
+        classVolumn_4 = new QLineEdit(groupBox_3);
+        classVolumn_4->setObjectName(QStringLiteral("classVolumn_4"));
+
+        gridLayout_3->addWidget(classVolumn_4, 1, 4, 1, 2);
+
+        classVolumn_3 = new QLineEdit(groupBox_3);
+        classVolumn_3->setObjectName(QStringLiteral("classVolumn_3"));
+
+        gridLayout_3->addWidget(classVolumn_3, 0, 4, 1, 2);
+
+        classContain = new QLineEdit(groupBox_3);
+        classContain->setObjectName(QStringLiteral("classContain"));
+        classContain->setEnabled(false);
+
+        gridLayout_3->addWidget(classContain, 2, 4, 1, 2);
+
+        endTIme_2 = new QLineEdit(groupBox_3);
+        endTIme_2->setObjectName(QStringLiteral("endTIme_2"));
+
+        gridLayout_3->addWidget(endTIme_2, 3, 4, 1, 2);
+
+        gridLayout_3->setColumnStretch(0, 1);
+        gridLayout_3->setColumnStretch(1, 1);
+        gridLayout_3->setColumnStretch(2, 1);
+        gridLayout_3->setColumnStretch(3, 1);
+        gridLayout_3->setColumnStretch(4, 1);
+        gridLayout_3->setColumnStretch(5, 1);
+
+        verticalLayout_3->addWidget(groupBox_3);
+
+        groupBox_4 = new QGroupBox(tab_2);
+        groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
+        horizontalLayout = new QHBoxLayout(groupBox_4);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        class_tableview = new QTableView(groupBox_4);
+        class_tableview->setObjectName(QStringLiteral("class_tableview"));
+
+        horizontalLayout->addWidget(class_tableview);
+
+
+        verticalLayout_3->addWidget(groupBox_4);
+
+        tabWidget->addTab(tab_2, QString());
+
+        verticalLayout->addWidget(tabWidget);
 
         informationPlatformClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(informationPlatformClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 785, 26));
+        menuBar->setGeometry(QRect(0, 0, 1483, 26));
         informationPlatformClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(informationPlatformClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -163,6 +355,9 @@ public:
 
         retranslateUi(informationPlatformClass);
 
+        tabWidget->setCurrentIndex(0);
+
+
         QMetaObject::connectSlotsByName(informationPlatformClass);
     } // setupUi
 
@@ -170,18 +365,43 @@ public:
     {
         informationPlatformClass->setWindowTitle(QApplication::translate("informationPlatformClass", "informationPlatform", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("informationPlatformClass", "\344\277\241\346\201\257\345\275\225\345\205\245", Q_NULLPTR));
-        label->setText(QApplication::translate("informationPlatformClass", "\345\247\223\345\220\215", Q_NULLPTR));
-        label_2->setText(QApplication::translate("informationPlatformClass", "\345\271\264\351\276\204", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("informationPlatformClass", "\346\217\220\344\272\244", Q_NULLPTR));
-        label_4->setText(QApplication::translate("informationPlatformClass", "\345\255\246\346\240\241", Q_NULLPTR));
         label_3->setText(QApplication::translate("informationPlatformClass", "\347\224\265\350\257\235", Q_NULLPTR));
-        label_5->setText(QApplication::translate("informationPlatformClass", "\346\200\247\345\210\253", Q_NULLPTR));
+        label_4->setText(QApplication::translate("informationPlatformClass", "\345\255\246\346\240\241", Q_NULLPTR));
         sex->clear();
         sex->insertItems(0, QStringList()
          << QApplication::translate("informationPlatformClass", "\347\224\267", Q_NULLPTR)
          << QApplication::translate("informationPlatformClass", "\345\245\263", Q_NULLPTR)
         );
-        groupBox_2->setTitle(QApplication::translate("informationPlatformClass", "\344\277\241\346\201\257\346\230\276\347\244\272", Q_NULLPTR));
+        label->setText(QApplication::translate("informationPlatformClass", "\345\247\223\345\220\215", Q_NULLPTR));
+        label_2->setText(QApplication::translate("informationPlatformClass", "\345\271\264\351\276\204", Q_NULLPTR));
+        label_5->setText(QApplication::translate("informationPlatformClass", "\346\200\247\345\210\253", Q_NULLPTR));
+        alter->setText(QApplication::translate("informationPlatformClass", "\344\277\256\346\224\271", Q_NULLPTR));
+        submit->setText(QApplication::translate("informationPlatformClass", "\346\217\220\344\272\244", Q_NULLPTR));
+        groupBox_2->setTitle(QApplication::translate("informationPlatformClass", "\345\275\225\345\205\245\344\277\241\346\201\257", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("informationPlatformClass", "\345\255\246\347\224\237\344\277\241\346\201\257", Q_NULLPTR));
+        groupBox_3->setTitle(QApplication::translate("informationPlatformClass", "\350\257\276\347\250\213\345\275\225\345\205\245", Q_NULLPTR));
+        label_10->setText(QApplication::translate("informationPlatformClass", "\346\200\273\344\272\272\346\225\260", Q_NULLPTR));
+        label_6->setText(QApplication::translate("informationPlatformClass", "\347\217\255\347\272\247\347\274\226\347\240\201", Q_NULLPTR));
+        label_14->setText(QApplication::translate("informationPlatformClass", "\347\217\255\347\272\247\351\207\221\351\242\235", Q_NULLPTR));
+        label_15->setText(QApplication::translate("informationPlatformClass", "\350\257\276\346\254\241", Q_NULLPTR));
+        label_16->setText(QApplication::translate("informationPlatformClass", "\346\225\231\345\270\210\345\247\223\345\220\215", Q_NULLPTR));
+        label_13->setText(QApplication::translate("informationPlatformClass", "\347\247\221\347\233\256", Q_NULLPTR));
+        addClass->setText(QApplication::translate("informationPlatformClass", "\346\267\273\345\212\240", Q_NULLPTR));
+        label_7->setText(QApplication::translate("informationPlatformClass", "\347\217\255\347\272\247\345\220\215\347\247\260", Q_NULLPTR));
+        label_9->setText(QApplication::translate("informationPlatformClass", "\345\267\262\346\212\245\344\272\272\346\225\260", Q_NULLPTR));
+        label_12->setText(QApplication::translate("informationPlatformClass", "\345\271\264\347\272\247", Q_NULLPTR));
+        alterClass->setText(QApplication::translate("informationPlatformClass", "\344\277\256\346\224\271", Q_NULLPTR));
+        comboBox_2->clear();
+        comboBox_2->insertItems(0, QStringList()
+         << QApplication::translate("informationPlatformClass", "\345\210\235\344\270\200", Q_NULLPTR)
+         << QApplication::translate("informationPlatformClass", "\345\210\235\344\272\214", Q_NULLPTR)
+         << QApplication::translate("informationPlatformClass", "\345\210\235\344\270\211", Q_NULLPTR)
+         << QApplication::translate("informationPlatformClass", "\351\253\230\344\270\200", Q_NULLPTR)
+         << QApplication::translate("informationPlatformClass", "\351\253\230\344\272\214", Q_NULLPTR)
+         << QApplication::translate("informationPlatformClass", "\351\253\230\344\270\211", Q_NULLPTR)
+        );
+        groupBox_4->setTitle(QApplication::translate("informationPlatformClass", "\350\257\276\347\250\213\344\277\241\346\201\257", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("informationPlatformClass", "\350\257\276\347\250\213\344\277\241\346\201\257", Q_NULLPTR));
     } // retranslateUi
 
 };
