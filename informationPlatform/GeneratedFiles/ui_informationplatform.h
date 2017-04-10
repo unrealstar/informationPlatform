@@ -50,10 +50,10 @@ public:
     QLineEdit *name;
     QLabel *label_2;
     QLabel *label_5;
-    QPushButton *alter;
+    QPushButton *modifyStudent;
     QLineEdit *age;
     QLineEdit *phone;
-    QPushButton *submit;
+    QPushButton *addStudent;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_2;
     QTableView *student_tableview;
@@ -71,16 +71,16 @@ public:
     QLabel *label_7;
     QLabel *label_9;
     QLabel *label_12;
-    QPushButton *alterClass;
-    QLineEdit *startTime_3;
-    QLineEdit *startTime_2;
-    QLineEdit *classVolumn_2;
-    QComboBox *comboBox_2;
-    QLineEdit *classVolumn;
-    QLineEdit *classVolumn_4;
-    QLineEdit *classVolumn_3;
-    QLineEdit *classContain;
-    QLineEdit *endTIme_2;
+    QPushButton *modifyClass;
+    QLineEdit *teacherName;
+    QLineEdit *value;
+    QLineEdit *totalNum;
+    QComboBox *grade;
+    QLineEdit *classCode;
+    QLineEdit *subject;
+    QLineEdit *className;
+    QLineEdit *assignNum;
+    QLineEdit *classNum;
     QGroupBox *groupBox_4;
     QHBoxLayout *horizontalLayout;
     QTableView *class_tableview;
@@ -158,10 +158,10 @@ public:
 
         gridLayout->addWidget(label_5, 1, 0, 1, 1);
 
-        alter = new QPushButton(groupBox);
-        alter->setObjectName(QStringLiteral("alter"));
+        modifyStudent = new QPushButton(groupBox);
+        modifyStudent->setObjectName(QStringLiteral("modifyStudent"));
 
-        gridLayout->addWidget(alter, 2, 4, 1, 1);
+        gridLayout->addWidget(modifyStudent, 2, 4, 1, 1);
 
         age = new QLineEdit(groupBox);
         age->setObjectName(QStringLiteral("age"));
@@ -173,10 +173,10 @@ public:
 
         gridLayout->addWidget(phone, 1, 3, 1, 1);
 
-        submit = new QPushButton(groupBox);
-        submit->setObjectName(QStringLiteral("submit"));
+        addStudent = new QPushButton(groupBox);
+        addStudent->setObjectName(QStringLiteral("addStudent"));
 
-        gridLayout->addWidget(submit, 2, 2, 1, 2);
+        gridLayout->addWidget(addStudent, 2, 2, 1, 2);
 
         gridLayout->setColumnStretch(0, 1);
         gridLayout->setColumnStretch(1, 2);
@@ -263,56 +263,56 @@ public:
 
         gridLayout_3->addWidget(label_12, 1, 0, 1, 1);
 
-        alterClass = new QPushButton(groupBox_3);
-        alterClass->setObjectName(QStringLiteral("alterClass"));
+        modifyClass = new QPushButton(groupBox_3);
+        modifyClass->setObjectName(QStringLiteral("modifyClass"));
 
-        gridLayout_3->addWidget(alterClass, 5, 2, 1, 1);
+        gridLayout_3->addWidget(modifyClass, 5, 2, 1, 1);
 
-        startTime_3 = new QLineEdit(groupBox_3);
-        startTime_3->setObjectName(QStringLiteral("startTime_3"));
+        teacherName = new QLineEdit(groupBox_3);
+        teacherName->setObjectName(QStringLiteral("teacherName"));
 
-        gridLayout_3->addWidget(startTime_3, 4, 1, 1, 2);
+        gridLayout_3->addWidget(teacherName, 4, 1, 1, 2);
 
-        startTime_2 = new QLineEdit(groupBox_3);
-        startTime_2->setObjectName(QStringLiteral("startTime_2"));
+        value = new QLineEdit(groupBox_3);
+        value->setObjectName(QStringLiteral("value"));
 
-        gridLayout_3->addWidget(startTime_2, 3, 1, 1, 2);
+        gridLayout_3->addWidget(value, 3, 1, 1, 2);
 
-        classVolumn_2 = new QLineEdit(groupBox_3);
-        classVolumn_2->setObjectName(QStringLiteral("classVolumn_2"));
+        totalNum = new QLineEdit(groupBox_3);
+        totalNum->setObjectName(QStringLiteral("totalNum"));
 
-        gridLayout_3->addWidget(classVolumn_2, 2, 1, 1, 2);
+        gridLayout_3->addWidget(totalNum, 2, 1, 1, 2);
 
-        comboBox_2 = new QComboBox(groupBox_3);
-        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
+        grade = new QComboBox(groupBox_3);
+        grade->setObjectName(QStringLiteral("grade"));
 
-        gridLayout_3->addWidget(comboBox_2, 1, 1, 1, 2);
+        gridLayout_3->addWidget(grade, 1, 1, 1, 2);
 
-        classVolumn = new QLineEdit(groupBox_3);
-        classVolumn->setObjectName(QStringLiteral("classVolumn"));
+        classCode = new QLineEdit(groupBox_3);
+        classCode->setObjectName(QStringLiteral("classCode"));
 
-        gridLayout_3->addWidget(classVolumn, 0, 1, 1, 2);
+        gridLayout_3->addWidget(classCode, 0, 1, 1, 2);
 
-        classVolumn_4 = new QLineEdit(groupBox_3);
-        classVolumn_4->setObjectName(QStringLiteral("classVolumn_4"));
+        subject = new QLineEdit(groupBox_3);
+        subject->setObjectName(QStringLiteral("subject"));
 
-        gridLayout_3->addWidget(classVolumn_4, 1, 4, 1, 2);
+        gridLayout_3->addWidget(subject, 1, 4, 1, 2);
 
-        classVolumn_3 = new QLineEdit(groupBox_3);
-        classVolumn_3->setObjectName(QStringLiteral("classVolumn_3"));
+        className = new QLineEdit(groupBox_3);
+        className->setObjectName(QStringLiteral("className"));
 
-        gridLayout_3->addWidget(classVolumn_3, 0, 4, 1, 2);
+        gridLayout_3->addWidget(className, 0, 4, 1, 2);
 
-        classContain = new QLineEdit(groupBox_3);
-        classContain->setObjectName(QStringLiteral("classContain"));
-        classContain->setEnabled(false);
+        assignNum = new QLineEdit(groupBox_3);
+        assignNum->setObjectName(QStringLiteral("assignNum"));
+        assignNum->setEnabled(false);
 
-        gridLayout_3->addWidget(classContain, 2, 4, 1, 2);
+        gridLayout_3->addWidget(assignNum, 2, 4, 1, 2);
 
-        endTIme_2 = new QLineEdit(groupBox_3);
-        endTIme_2->setObjectName(QStringLiteral("endTIme_2"));
+        classNum = new QLineEdit(groupBox_3);
+        classNum->setObjectName(QStringLiteral("classNum"));
 
-        gridLayout_3->addWidget(endTIme_2, 3, 4, 1, 2);
+        gridLayout_3->addWidget(classNum, 3, 4, 1, 2);
 
         gridLayout_3->setColumnStretch(0, 1);
         gridLayout_3->setColumnStretch(1, 1);
@@ -375,8 +375,8 @@ public:
         label->setText(QApplication::translate("informationPlatformClass", "\345\247\223\345\220\215", Q_NULLPTR));
         label_2->setText(QApplication::translate("informationPlatformClass", "\345\271\264\351\276\204", Q_NULLPTR));
         label_5->setText(QApplication::translate("informationPlatformClass", "\346\200\247\345\210\253", Q_NULLPTR));
-        alter->setText(QApplication::translate("informationPlatformClass", "\344\277\256\346\224\271", Q_NULLPTR));
-        submit->setText(QApplication::translate("informationPlatformClass", "\346\217\220\344\272\244", Q_NULLPTR));
+        modifyStudent->setText(QApplication::translate("informationPlatformClass", "\344\277\256\346\224\271", Q_NULLPTR));
+        addStudent->setText(QApplication::translate("informationPlatformClass", "\346\217\220\344\272\244", Q_NULLPTR));
         groupBox_2->setTitle(QApplication::translate("informationPlatformClass", "\345\275\225\345\205\245\344\277\241\346\201\257", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("informationPlatformClass", "\345\255\246\347\224\237\344\277\241\346\201\257", Q_NULLPTR));
         groupBox_3->setTitle(QApplication::translate("informationPlatformClass", "\350\257\276\347\250\213\345\275\225\345\205\245", Q_NULLPTR));
@@ -390,9 +390,9 @@ public:
         label_7->setText(QApplication::translate("informationPlatformClass", "\347\217\255\347\272\247\345\220\215\347\247\260", Q_NULLPTR));
         label_9->setText(QApplication::translate("informationPlatformClass", "\345\267\262\346\212\245\344\272\272\346\225\260", Q_NULLPTR));
         label_12->setText(QApplication::translate("informationPlatformClass", "\345\271\264\347\272\247", Q_NULLPTR));
-        alterClass->setText(QApplication::translate("informationPlatformClass", "\344\277\256\346\224\271", Q_NULLPTR));
-        comboBox_2->clear();
-        comboBox_2->insertItems(0, QStringList()
+        modifyClass->setText(QApplication::translate("informationPlatformClass", "\344\277\256\346\224\271", Q_NULLPTR));
+        grade->clear();
+        grade->insertItems(0, QStringList()
          << QApplication::translate("informationPlatformClass", "\345\210\235\344\270\200", Q_NULLPTR)
          << QApplication::translate("informationPlatformClass", "\345\210\235\344\272\214", Q_NULLPTR)
          << QApplication::translate("informationPlatformClass", "\345\210\235\344\270\211", Q_NULLPTR)

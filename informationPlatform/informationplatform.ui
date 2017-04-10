@@ -96,7 +96,7 @@
             </widget>
            </item>
            <item row="2" column="4">
-            <widget class="QPushButton" name="alter">
+            <widget class="QPushButton" name="modifyStudent">
              <property name="text">
               <string>修改</string>
              </property>
@@ -109,7 +109,7 @@
             <widget class="QLineEdit" name="phone"/>
            </item>
            <item row="2" column="2" colspan="2">
-            <widget class="QPushButton" name="submit">
+            <widget class="QPushButton" name="addStudent">
              <property name="text">
               <string>提交</string>
              </property>
@@ -214,23 +214,23 @@
             </widget>
            </item>
            <item row="5" column="2">
-            <widget class="QPushButton" name="alterClass">
+            <widget class="QPushButton" name="modifyClass">
              <property name="text">
               <string>修改</string>
              </property>
             </widget>
            </item>
            <item row="4" column="1" colspan="2">
-            <widget class="QLineEdit" name="startTime_3"/>
+            <widget class="QLineEdit" name="teacherName"/>
            </item>
            <item row="3" column="1" colspan="2">
-            <widget class="QLineEdit" name="startTime_2"/>
+            <widget class="QLineEdit" name="value"/>
            </item>
            <item row="2" column="1" colspan="2">
-            <widget class="QLineEdit" name="classVolumn_2"/>
+            <widget class="QLineEdit" name="totalNum"/>
            </item>
            <item row="1" column="1" colspan="2">
-            <widget class="QComboBox" name="comboBox_2">
+            <widget class="QComboBox" name="grade">
              <item>
               <property name="text">
                <string>初一</string>
@@ -264,23 +264,23 @@
             </widget>
            </item>
            <item row="0" column="1" colspan="2">
-            <widget class="QLineEdit" name="classVolumn"/>
+            <widget class="QLineEdit" name="classCode"/>
            </item>
            <item row="1" column="4" colspan="2">
-            <widget class="QLineEdit" name="classVolumn_4"/>
+            <widget class="QLineEdit" name="subject"/>
            </item>
            <item row="0" column="4" colspan="2">
-            <widget class="QLineEdit" name="classVolumn_3"/>
+            <widget class="QLineEdit" name="className"/>
            </item>
            <item row="2" column="4" colspan="2">
-            <widget class="QLineEdit" name="classContain">
+            <widget class="QLineEdit" name="assignNum">
              <property name="enabled">
               <bool>false</bool>
              </property>
             </widget>
            </item>
            <item row="3" column="4" colspan="2">
-            <widget class="QLineEdit" name="endTIme_2"/>
+            <widget class="QLineEdit" name="classNum"/>
            </item>
           </layout>
          </widget>

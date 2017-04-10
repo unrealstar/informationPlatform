@@ -20,11 +20,16 @@ informationPlatform::informationPlatform(QWidget *parent)
 		getClassInfo();
 	}	
 
-	connect(ui.submit, SIGNAL(clicked()), this, SLOT(slt_submitInfo()));
-	connect(ui.alter, SIGNAL(clicked()), this, SLOT(slt_alterInfo()));
+	//关联学生控制信息
+	connect(ui.addStudent, SIGNAL(clicked()), this, SLOT(slt_addStudent()));
+	connect(ui.modifyStudent, SIGNAL(clicked()), this, SLOT(slt_modifyStudent()));
+	connect(ui.student_tableview, SIGNAL(clicked(const QModelIndex&)), this, SLOT(slt_studentTableItemClicked(const QModelIndex&)));
 
-	connect(ui.student_tableview, SIGNAL(clicked(const QModelIndex&)), this, SLOT(slt_tableItemClicked(const QModelIndex&)));
-
+	//关联课程控制信息
+	connect(ui.addClass, SIGNAL(clicked()), this, SLOT(slt_addClass()));
+	connect(ui.modifyClass, SIGNAL(clicked()), this, SLOT(slt_modifyClass()));
+	connect(ui.class_tableview, SIGNAL(clicked(const QModelIndex&)), this, SLOT(slt_classTableItemClicked(const QModelIndex&)));
+	connect(ui.classCode, SIGNAL(textChanged(const QString &)), this, SLOT(slt_classCodeChanged(const QString &)));
 
 }
 
@@ -49,8 +54,8 @@ bool informationPlatform::getStudentInfo(void)
 	}
 
 	int rowNum = mysql_affected_rows(&mysql);
-	m_newId = rowNum;
-	ui.alter->setEnabled(false);
+	m_newStudentID = rowNum;
+	ui.modifyStudent->setEnabled(false);
 
 	
 	//获取字段的信息
@@ -164,9 +169,9 @@ informationPlatform::~informationPlatform()
 void informationPlatform::initData(void)
 {
 	//目前默认填为0，之后通过其他方式初始化该值
-	m_newId = 0;
+	m_newStudentID = 0;
 
-	m_clickedId = -1;
+	m_selectStudentID = -1;
 
 	//设置输入数据值限制条件
 	ui.age->setValidator(new QIntValidator(1, 100, this));
@@ -364,11 +369,11 @@ void informationPlatform::updateTable(Class_Info &info)
 }
 
 
-void informationPlatform::slt_tableItemClicked(const QModelIndex &modelIndex)
+void informationPlatform::slt_studentTableItemClicked(const QModelIndex &modelIndex)
 {
 	int row = modelIndex.row();
-	m_clickedId = student_model->item(row, 0)->text().toInt();
-	ui.alter->setEnabled(true);
+	m_selectStudentID = student_model->item(row, 0)->text().toInt();
+	ui.modifyStudent->setEnabled(true);
 	QString name = student_model->item(row, 1)->text();
 	ui.name->setText(name);
 	QString sex = student_model->item(row, 2)->text();
@@ -393,12 +398,12 @@ void informationPlatform::slt_tableItemClicked(const QModelIndex &modelIndex)
 
 }
 
-void informationPlatform::slt_submitInfo(void)
-{
-	bool suc = true;
-	CStudent_Info info;
 
-	info.id = m_newId;
+void informationPlatform::slt_addStudent(void)
+{
+	Student_Info info;
+
+	info.id = m_newStudentID;
 	QString name = ui.name->text();
 	if (name != "")
 	{
@@ -416,10 +421,7 @@ void informationPlatform::slt_submitInfo(void)
 		info.school = school;
 	}
 
-
-	suc= insertStudentInfo(info);
-
-	if (suc)
+	if (insertStudentInfo(info))
 	{
 		getStudentInfo();
 	}
@@ -431,12 +433,11 @@ void informationPlatform::slt_searchInfo(void)
 
 }
 
-void informationPlatform::slt_alterInfo(void)
+void informationPlatform::slt_modifyStudent(void)
 {
-	bool suc = true;
-	CStudent_Info info;
+	Student_Info info;
 
-	info.id = m_clickedId;
+	info.id = m_selectStudentID;
 	QString name = ui.name->text();
 	if (name != "")
 	{
@@ -455,16 +456,94 @@ void informationPlatform::slt_alterInfo(void)
 	}
 
 
-	suc = updateStudentInfo(info);
-
-	if (suc)
+	if (updateStudentInfo(info))
 	{
 		getStudentInfo();
 	}
 }
 
+void informationPlatform::slt_addClass(void)
+{
+	Class_Info info;
+	info.class_code = ui.classCode->text();
+	info.class_name = ui.className->text();
+	info.grade = ui.grade->currentIndex();
+	info.subject = ui.subject->text();
+	info.totalNum = ui.totalNum->text().toInt();
+	info.assignNum = ui.assignNum->text().toInt();
+	info.value = ui.value->text().toInt();
+	info.classNum = ui.classNum->text().toInt();
+	info.teacherName = ui.teacherName->text();
 
-bool informationPlatform::insertStudentInfo(CStudent_Info &info)
+	if (insertClassInfo(info))
+	{
+		getClassInfo();
+	}
+	
+}
+
+void informationPlatform::slt_modifyClass(void)
+{
+	Class_Info info;
+	info.class_code = m_selectClassCode;
+	info.class_name = ui.className->text();
+	info.grade = ui.grade->currentIndex();
+	info.subject = ui.subject->text();
+	info.totalNum = ui.totalNum->text().toInt();
+	info.assignNum = ui.assignNum->text().toInt();
+	info.value = ui.value->text().toInt();
+	info.classNum = ui.classNum->text().toInt();
+	info.teacherName = ui.teacherName->text();
+
+	if (updateClassInfo(info))
+	{
+		getClassInfo();
+	}
+}
+
+
+void informationPlatform::slt_classTableItemClicked(const QModelIndex &modelIndex)
+{
+	int row = modelIndex.row();
+	m_selectClassCode = class_model->item(row, 0)->text();
+	ui.modifyClass->setEnabled(true);
+	QString class_name = class_model->item(row, 1)->text();
+	ui.className->setText(class_name);
+	int grade = class_model->item(row, 2)->text().toInt();
+	ui.grade->setCurrentIndex(grade);	
+
+	QString subject = class_model->item(row, 3)->text();
+	ui.subject->setText(subject);
+
+	QString totalNum = class_model->item(row, 4)->text();
+	ui.totalNum->setText(totalNum);
+
+	QString assignNum = class_model->item(row, 5)->text();
+	ui.assignNum->setText(assignNum);
+
+	QString value = class_model->item(row, 6)->text();
+	ui.value->setText(value);
+
+	QString classNum = class_model->item(row, 7)->text();
+	ui.classNum->setText(classNum);
+
+	QString teacherName = class_model->item(row,8)->text();
+	ui.teacherName->setText(teacherName);
+}
+
+void informationPlatform::slt_classCodeChanged(const QString &str)
+{
+	if (str != m_selectClassCode  && str != "")
+	{
+		ui.modifyClass->setEnabled(false);
+	}
+	else
+	{
+		ui.modifyClass->setEnabled(true);
+	}
+}
+
+bool informationPlatform::insertStudentInfo(Student_Info &info)
 {
 	char query[150]; //查询语句
 	memset(query, 0, 150);
@@ -502,7 +581,50 @@ bool informationPlatform::insertStudentInfo(CStudent_Info &info)
 
 }
 
-bool informationPlatform::updateStudentInfo(CStudent_Info &info)
+
+
+bool informationPlatform::insertClassInfo(Class_Info &info)
+{
+	char query[150]; //查询语句
+	memset(query, 0, 150);
+	QString queryString;
+	queryString += "insert into classinfo values(";
+	queryString += info.class_code + ",'";
+	queryString += info.class_name + "',";
+	queryString += QString::number(info.grade) + ",";
+	queryString += info.subject + ",";
+	queryString += QString::number(info.totalNum) + ",'";
+	queryString += QString::number(info.assignNum) + ",'";
+	queryString += QString::number(info.value) + ",'";
+	queryString += QString::number(info.classNum) + ",'";
+	queryString += info.teacherName + "');";
+	QByteArray buff = queryString.toLocal8Bit();
+	std::string str = queryString.toStdString();
+	strcpy(query, buff.data());
+	//query = queryString.toStdString().c_str();  //可以想办法实现手动在控制台手动输入指令
+	if (mysql_query(&mysql, query))        //执行SQL语句
+	{
+		QString errorStr(mysql_error(&mysql));
+		QMessageBox msgBox;
+		msgBox.setWindowTitle(u8"提示信息");
+		msgBox.setText(errorStr);
+		msgBox.exec();
+		printf("Query failed (%s)\n", mysql_error(&mysql));
+		return false;
+	}
+	else
+	{
+		QMessageBox msgBox;
+		msgBox.setWindowTitle(u8"提示信息");
+		msgBox.setText(u8"增加班级信息成功！");
+		msgBox.exec();
+		printf("Insert success\n");
+		return true;
+	}
+
+}
+
+bool informationPlatform::updateStudentInfo(Student_Info &info)
 {
 	//UPDATE studentinfo SET name='dsa', sex='1', age='14', phoneNo='414', school='fsd' WHERE studentId='1';
 	char query[150]; //查询语句
@@ -535,6 +657,48 @@ bool informationPlatform::updateStudentInfo(CStudent_Info &info)
 		QMessageBox msgBox;
 		msgBox.setWindowTitle(u8"提示信息");
 		msgBox.setText(u8"修改学生信息成功！");
+		msgBox.exec();
+		printf("update success\n");
+		return true;
+	}
+}
+
+bool informationPlatform::updateClassInfo(Class_Info &info)
+{
+	//UPDATE studentinfo SET name='dsa', sex='1', age='14', phoneNo='414', school='fsd' WHERE studentId='1';
+	char query[150]; //查询语句
+	memset(query, 0, 150);
+	QString queryString;
+	queryString += "update classinfo set 班级名称='";
+	queryString += info.class_name + "', 年级='";
+	queryString += QString::number(info.grade) + "',科目='";
+	queryString += info.subject + "',总人数='";
+	queryString += QString::number(info.totalNum) + "',已报人数='";
+	queryString += QString::number(info.assignNum) + "',班级金额='";
+	queryString += QString::number(info.value) + "',课次='";
+	queryString += QString::number(info.classNum) + "',教师姓名='";
+	queryString += info.teacherName + "' WHERE 班级编码='";
+	queryString += info.class_code + "';";
+
+	//queryString= u8"UPDATE studentinfo SET name='三大法师', sex='1',age='14',phoneNo='414',school='的速度' WHERE studentId='1';";
+	QByteArray buff = queryString.toLocal8Bit();
+	strcpy(query, buff.data());
+	//query = queryString.toStdString().c_str();  //可以想办法实现手动在控制台手动输入指令
+	if (mysql_query(&mysql, query))        //执行SQL语句
+	{
+		QString errorStr(mysql_error(&mysql));
+		QMessageBox msgBox;
+		msgBox.setWindowTitle(u8"提示信息");
+		msgBox.setText(errorStr);
+		msgBox.exec();
+		printf("Query failed (%s)\n", mysql_error(&mysql));
+		return false;
+	}
+	else
+	{
+		QMessageBox msgBox;
+		msgBox.setWindowTitle(u8"提示信息");
+		msgBox.setText(u8"修改班级信息成功！");
 		msgBox.exec();
 		printf("update success\n");
 		return true;

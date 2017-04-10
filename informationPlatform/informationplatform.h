@@ -73,11 +73,17 @@ public:
 	~informationPlatform();
 
 public slots:
-	//提交信息槽函数
-	void slt_submitInfo(void);
+	//学生信息槽函数
+	void slt_addStudent(void);
 	void slt_searchInfo(void);
-	void slt_alterInfo(void);
-	void slt_tableItemClicked(const QModelIndex&);
+	void slt_modifyStudent(void);
+	void slt_studentTableItemClicked(const QModelIndex&);
+
+	//课程信息槽函数
+	void slt_addClass(void);
+	void slt_modifyClass(void);
+	void slt_classTableItemClicked(const QModelIndex&);
+	void slt_classCodeChanged(const QString &);
 
 private:
 	//初始化数据信息
@@ -93,8 +99,12 @@ private:
 	bool initMySqlConnection(void);
 
 	//插入学生数据
-	bool insertStudentInfo(CStudent_Info &info);
-	bool updateStudentInfo(CStudent_Info &info);
+	bool insertStudentInfo(Student_Info &info);
+	bool updateStudentInfo(Student_Info &info);
+
+	//插入课程数据
+	bool insertClassInfo(Class_Info &info);
+	bool updateClassInfo(Class_Info &info);
 
 	bool getStudentInfo(void);
 	bool getClassInfo(void);
@@ -111,8 +121,10 @@ private:
 	QStandardItemModel *student_model;
 	QStandardItemModel *class_model;
 
-	int					m_newId;
-	int					m_clickedId;		//点击
+	int					m_newStudentID;			//新增学生编号
+	int					m_selectStudentID;		//选中学生编号
+
+	QString			m_selectClassCode;		//选中课程编码
 
 };
 
